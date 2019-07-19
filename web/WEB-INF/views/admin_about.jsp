@@ -19,10 +19,6 @@
     <p style="font-size:14px">关于 洛阳旅游网站-后台管理系统</p>
     <ul>
         <li>开发者：李耀威</li>
-        <li>email：1870038368@qq.com</li>
-        <li>采用技术：html+css+JavaScript+Jsp+Java+MySQL</li>
-        <li>采用框架：jQuery+bootstrap+highcharts;Spring MVC+Spring IOC/AOP+Mybatis</li>
-        <li>本软件采用了git进行了版本控制</li>
     </ul>
 </div>
 </body>
