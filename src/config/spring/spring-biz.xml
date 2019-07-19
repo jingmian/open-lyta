@@ -1,0 +1,40 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd
+    http://www.springframework.org/schema/aop
+    http://www.springframework.org/schema/aop/spring-aop.xsd
+    http://www.springframework.org/schema/tx
+    http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+    <import resource="spring-dao.xml"/> <!--代理需要用dao里面的东西-->
+
+    <context:component-scan base-package="cn.net.lyta.biz"/>   <!--开启自动扫描-->
+    <aop:aspectj-autoproxy/>  <!--声明事物  先打开自动代理-->
+
+
+    <bean id="transationManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager"><!--事物管理器-->
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <!--声明通知-->
+    <tx:advice id="txAdvice" transaction-manager="transationManager"> <!--指定事物管理器-->
+        <tx:attributes>
+            <tx:method name="get*" read-only="true"/>
+            <tx:method name="find*" read-only="true"/>
+            <tx:method name="search*" read-only="true"/>
+            <tx:method name="*" propagation="REQUIRED"/>
+        </tx:attributes>
+    </tx:advice>
+
+    <aop:config> <!--声明切入点  第一个* 表示任意返回值  cn.net.lyta.biz下的所有类的所遇方法的所有参数 -->
+        <aop:pointcut id="txpc" expression="execution(* cn.net.lyta.biz.*.*(..))"/>
+        <aop:advisor advice-ref="txAdvice" pointcut-ref="txpc"/>
+    </aop:config>
+
+</beans>

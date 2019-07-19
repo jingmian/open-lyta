@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.4//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.net.lyta.dao.ScenicDao">
+    <resultMap id="scenic" type="Scenic">
+        <id property="scenicId" column="scenic_id" javaType="int"/>
+        <result property="scenicType" column="scenic_type" javaType="String"/>
+        <result property="rank" column="rank" javaType="String"/>
+        <result property="scenicName" column="scenic_name" javaType="String"/>
+        <result property="scenicImgPath" column="scenic_img_path" javaType="String"/>
+        <result property="scenicContent" column="scenic_content" javaType="String"/>
+        <result property="price" column="price" javaType="String"/>
+        <result property="openTime" column="open_time" javaType="String"/>
+        <result property="scenicAddress" column="scenic_address" javaType="String"/>
+
+    </resultMap>
+
+    <select id="selectList" resultMap="scenic">
+        select scenic_id,scenic_name,scenic_img_path,scenic_type from scenic
+    </select>
+
+    <select id="selectById" resultMap="scenic">
+        select
+          scenic_id,scenic_type,scenic_type,scenic_name,scenic_img_path,scenic_content,price,open_time,scenic_address
+        from  scenic
+        where
+        scenic_id = #{scenicId}
+    </select>
+
+    <select id="selectAll" resultMap="scenic">
+        select scenic_id,scenic_type,scenic_name, scenic_img_path, scenic_content, price, open_time, scenic_address from scenic
+    </select>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="scenicId" parameterType="Scenic">
+    INSERT INTO scenic (scenic_type,scenic_name, scenic_img_path, scenic_content, price, open_time, scenic_address)
+    VALUES (#{scenicType},#{scenicName},#{scenicImgPath}, #{scenicContent}, #{price}, #{openTime}, #{scenicAddress})
+    </insert>
+
+    <update id="update" parameterType="Scenic">
+        update scenic set scenic_type=#{scenicType},scenic_name=#{scenicName},scenic_img_path=#{scenicImgPath},scenic_content=#{scenicContent}, price=#{price}, open_time=#{openTime},scenic_address=#{scenicAddress} where scenic_id=#{scenicId}
+    </update>
+    <delete id="delete" parameterType="Scenic">
+        delete from scenic where scenic_id=#{scenicId}
+    </delete>
+
+
+</mapper>

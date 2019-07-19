@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+         version="3.1">
+
+<filter>
+  <filter-name>encoding</filter-name>
+  <filter-class>cn.net.lyta.globle.EncodingFilter</filter-class>
+  <init-param>
+    <param-name>encoding</param-name>
+    <param-value>utf-8</param-value>
+  </init-param>
+</filter>
+<filter-mapping>
+  <filter-name>encoding</filter-name>
+  <url-pattern>/*</url-pattern>
+</filter-mapping>
+
+<servlet-mapping><!--这个default 是已经创建好了的，可以直接用-->
+  <servlet-name>default</servlet-name>
+  <url-pattern>/assets/*</url-pattern>
+  <url-pattern>/css/*</url-pattern>
+  <url-pattern>/img/*</url-pattern>
+  <url-pattern>/js/*</url-pattern>
+  <url-pattern>/vendor/*</url-pattern>
+  <url-pattern>*.js</url-pattern>
+  <url-pattern>*.jpg</url-pattern>
+  <url-pattern>*.gif</url-pattern>
+  <url-pattern>*.png</url-pattern>
+  <url-pattern>*.css</url-pattern>
+</servlet-mapping>
+
+  <context-param>
+    <!--<param-name>contextConfigLocation</param-name>
+    <param-value>/WEB-INF/applicationContext.xml</param-value>-->
+    <param-name>log4jConfigLocation</param-name>
+    <param-value>classpath:config/log4j.properties</param-value>
+  </context-param>
+  <listener>
+    <listener-class>
+      org.springframework.web.util.Log4jConfigListener
+    </listener-class>
+    <!--<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>-->
+  </listener>
+
+<servlet>
+  <servlet-name>SpringMVC</servlet-name>
+  <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class><!--servlet的类在哪里-->
+  <init-param>
+    <param-name>contextConfigLocation</param-name>
+    <param-value>classpath:config/spring/spring-web.xml</param-value>
+  </init-param>
+  <load-on-startup>1</load-on-startup><!--项目启动时候自动加载-->
+</servlet>
+<servlet-mapping>
+  <servlet-name>SpringMVC</servlet-name>
+  <url-pattern>/</url-pattern> <!--路径是所有请求路径-->
+</servlet-mapping>
+
+
+</web-app>

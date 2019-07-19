@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.4//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.net.lyta.dao.MessageDao">
+    <resultMap id="message" type="Message">
+        <id property="id" column="id" javaType="int"/>
+        <result property="user_id" column="user_id" javaType="int"/>
+        <result property="username" column="username" javaType="String"/>
+        <result property="title" column="title" javaType="String"/>
+        <result property="create_time" column="create_time" javaType="java.util.Date"/>
+        <result property="content" column="content" javaType="String"/>
+
+    </resultMap>
+
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="Message"><!--开启了自动生成且返回id-->
+        insert into message(user_id,username,title,create_time,content)
+        values(#{user_id},#{username},#{title},#{create_time},#{content})
+    </insert>
+
+    <update id="update" parameterType="Message">
+        update message set user_id=#{user_id},username=#{username},title=#{title},content=#{content} where id=#{id}
+    </update>
+    <delete id="delete" parameterType="Integer">
+        delete from message where id=#{id}
+    </delete>
+    <select id="select" resultMap="message" parameterType="Integer">
+        select * from message  where id=#{id}
+    </select>
+
+    <select id="selectAll" resultMap="message">
+        select id,user_id,username,title,content from message
+    </select>
+
+    <sql id="pageWhere">
+        <where>
+            <if test="user_id !=null &amp;&amp; user_id !=0">
+                and user_id = #{user_id}
+            </if>
+
+        </where>
+    </sql>
+
+    <select id="searchMessage" resultType="Message">
+        select * from message
+        <include refid="pageWhere"></include>
+       order by id  desc LIMIT #{pager.firstParam} , #{pager.pageSize}
+    </select>
+
+    <select id="count" resultType="int" >
+        select count(* ) from message
+        <include refid="pageWhere"></include>
+    </select>
+
+</mapper>

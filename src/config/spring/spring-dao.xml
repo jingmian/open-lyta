@@ -1,0 +1,33 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd">
+    <!--全局扫描-->
+    <context:component-scan base-package="cn.net.lyta.dao"/>
+
+
+
+    <!--连接数据库-->
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/db_lyta?useUnicode=true&amp;characterEncoding=utf-8"/>
+        <property name="username" value="root"/>
+        <property name="password" value="root"/>
+    </bean>
+
+
+    <bean id="sessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">    <!--sessionFactory-->
+        <property name="dataSource" ref="dataSource"/>  <!--数据源-->
+        <property name="typeAliasesPackage" value="cn.net.lyta.entity"/>  <!--别名-->
+        <property name="configLocation" value="classpath:config/mybatis-config.xml"></property>
+    </bean>
+
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer"> <!--映射器接口 是自动调用的-->
+        <property name="sqlSessionFactoryBeanName" value="sessionFactory"/> <!--BeanName:这是个字符串-->
+        <property name="basePackage" value="cn.net.lyta.dao"/> <!--自动扫描这个属性对应的下面的所有的接口，并且把接口和配置的映射文件关联起来-->
+    </bean>
+
+</beans>

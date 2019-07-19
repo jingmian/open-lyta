@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.4//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.net.lyta.dao.AdminDao">
+    <resultMap id="admin" type="Admin">
+        <id property="id" column="id" javaType="int"/>
+        <result property="adminName" column="admin_name"   javaType="String"/>
+        <result property="password" column="password"   javaType="String"/>
+        <result property="email" column="email"  javaType="String"/>
+    </resultMap>
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="Admin">
+        insert into admin(admin_name,password,email)
+        values(#{adminName},#{password},#{email})
+    </insert>
+    <update id="update" parameterType="User">
+        update user
+        set admin_name=#{adminName},
+        password=#{password},
+        email=#{email}
+        where id=#{id}
+    </update>
+    <select id="selectById" resultMap="admin" parameterType="Integer">
+        select admin_name,password from admin  where id=#{id}
+    </select>
+    <delete id="deleteById" parameterType="Integer">
+        delete from admin where id=#{id}
+    </delete>
+    <select id="selectByName" resultMap="admin" parameterType="String">
+        select * from  admin  where admin_name=#{adminName}
+    </select>
+    <delete id="deleteByNmae" parameterType="String">
+        delete from admin where admin_name=#{adminName}
+    </delete>
+</mapper>

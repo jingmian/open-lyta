@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns:context="http://www.springframework.org/schema/context"
+           xmlns:mvc="http://www.springframework.org/schema/mvc"
+           xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd
+    http://www.springframework.org/schema/mvc
+    http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+
+    <import resource="spring-biz.xml"/><!--先引入业务层-->
+
+    <context:component-scan base-package="cn.net.lyta.controller"/> <!--开启自动扫描-->
+    <context:component-scan base-package="cn.net.lyta.entity"/> <!--开启自动扫描-->
+    <context:component-scan base-package="cn.net.lyta.globle"/> <!--开启自动扫描-->
+    <mvc:annotation-driven/> <!--开启mvc的注解驱动-->
+
+    <mvc:default-servlet-handler/> <!--静态资源交个servlet去处理-->
+
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"><!--视图转换器-->
+        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/><!--视图转换器用的类-->
+        <property name="prefix" value="/WEB-INF/views/"/><!--路径前缀-->
+        <property name="suffix" value=".jsp"/><!--路径后缀-->
+    </bean>
+
+    <mvc:interceptors><!--拦截器s 登录检查-->
+        <mvc:interceptor><!--拦截器-->
+            <mvc:mapping path="/**"/><!--拦截器所有路径-->
+            <bean class="cn.net.lyta.globle.LoginInterceptor"><!--用那个对象去拦截-->
+                <property name="exceptUrls">
+                    <list>
+                        <value>/admin/toAdmin</value>
+                        <value>/admin/admin</value>
+                        <value>/user/register</value>
+                        <value>/scenic/scenicList</value>
+                        <value>/scenic/content</value>
+                    </list>
+                </property>
+            </bean>
+        </mvc:interceptor>
+    </mvc:interceptors>
+
+
+</beans>

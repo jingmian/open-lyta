@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.4//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.net.lyta.dao.UserDao">
+    <resultMap id="user" type="User">
+        <id property="id" column="id" javaType="int"/>
+        <result property="username" column="username"   javaType="String"/>
+        <result property="password" column="password"   javaType="String"/>
+        <result property="realName" column="real_name"  javaType="String"/>
+        <result property="birthday" column="birthday"   javaType="java.util.Date"/>
+        <result property="phone"    column="phone"       javaType="String"/>
+        <result property="address"  column="address"    javaType="String"/>
+    </resultMap>
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="User">
+        insert into user(username,password,real_name,birthday,phone,address)
+        values(#{username},#{password},#{realName},#{birthday},#{phone},#{address})
+    </insert>
+    <update id="update" parameterType="User">
+        update user set username=#{username},password=#{password},real_name=#{realName},birthday=#{birthday},phone=#{phone},address=#{address} where id=#{id}
+    </update>
+    <delete id="delete" parameterType="Integer">
+        delete from user where id=#{id}
+    </delete>
+    <select id="select" resultMap="user" parameterType="Integer">
+        select * from user  where id=#{id}
+    </select>
+    <select id="selectByCreateSn" resultMap="user" parameterType="String">
+        select * from  user  where username=#{username}
+    </select>
+    <select id="selectByUsername" resultMap="user" parameterType="String">
+        select * from  user  where username=#{username}
+    </select>
+    <select id="selectAll" resultMap="user">
+        select id,username,password,real_name,phone,address from  user
+    </select>
+</mapper>

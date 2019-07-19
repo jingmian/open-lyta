@@ -1,0 +1,152 @@
+*{
+	margin:0px;
+	padding:0px;
+	border:0;
+	font-size:100%;
+	font-family:"./font/NotoSansHans-Regular.otf";
+}
+ul{
+	list-style:none;
+}
+a{
+	text-decoration: none;
+}
+
+header,section,footer{
+	width:100%;
+	margin:0 auto;
+	height:auto;
+}
+.container{
+	width:100%;
+	margin:0 auto;
+}
+header{
+	height:45px;
+	background:#F8F8F8;
+	border-bottom:1px solid #d0d6d9;
+}
+header nav{
+	float:right;
+	line-height:45px;
+}
+header nav>a{
+	padding:8px;
+	margin-left:10px;
+	border:1px solid #FB9D2A;
+	border-radius:25%;
+	color:#FB9D2A;
+	font-size:12px;
+}
+.banner{
+	margin-top:5px;
+}
+.banner>.container{
+	overflow: hidden;
+	height:auto;
+	background: rgba(238,238,238,0.8);
+	border-radius:5%;
+}
+.banner>.container>div{
+	width:900px;
+	margin:0 auto;
+}
+.banner h1{
+	padding:20px;
+	margin-top:10px;
+	font-size: 2em;         
+}
+.banner p{
+	padding:5px 20px 20px 20px;
+	text-indent: 2em;
+	font-size:18px;
+}
+.main{
+	margin-top:20px;
+}
+.main>.container{
+	height:auto;
+}
+.alt-item{
+	width:100%;
+	height:auto;
+	margin-bottom:15px;
+	background: #F9F9F9;
+}
+.alt-item>.alt-head{
+	width:100%;
+	text-align:center;
+	padding-top:10px;
+}
+.alt-info{
+	border-bottom: 1px solid #d0d6d9;
+}
+.alt-info>span{
+	margin-left:10px;
+	font-size:14px;
+}
+.alt-info>span>a{
+	color:black;
+}
+.alt-item>.alt-content{
+	padding:5px 10px 10px 10px;
+	font-size:16px;
+	letter-spacing: 2px;
+}
+.alt-content>h3{
+	width:200px;
+	margin:0 auto;
+	white-space: nowrap;
+	overflow: hidden;	/*text-overflow: ellipsis;*/
+	line-height: 30px;
+}
+.alt-content>p{
+	text-indent: 2em;
+	/*word-spacing:12px; */
+	/*letter-spacing: 3px;*/
+}
+.page{
+	margin:25px 0px;
+	overflow: hidden;
+}
+#pagefy{
+	float:right;
+	margin-right:20px;
+}
+#pagefy ul li{
+	float:left;
+	margin-left:5px;
+	padding:5px 0px;
+	border:1px solid #EB9D3B;
+}
+#pagefy ul li a{
+	padding:5px 10px;
+	color:#EB9D3B;
+}
+#pagefy ul li a:hover{
+	color:#EB9D3B;
+	background-color:#EEEEEE;
+}
+ #fatie{
+	float:left;
+	 margin-bottom: 16px;
+}
+#fatie button{
+	width: 16rem;
+	height:4rem;
+	color:white;
+	background-color:#EB9D3B;
+	border:1px solid #EB9D3B;
+	border-left:2px solid white;
+	border-top:2px solid white;
+	border-radius:5px;
+	font-weight:bold;
+	cursor:pointer;
+	box-shadow:5px 5px 12px #ccc;
+}
+footer{
+	margin-top:10px;
+	line-height:35px;
+	border-top:1px solid #d0d6d9;
+	text-align:center;
+}

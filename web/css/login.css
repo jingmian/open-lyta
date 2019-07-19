@@ -1,0 +1,115 @@
+ *{
+        margin:0px;
+        padding:0px;
+    }
+    a{
+        text-decoration: none;
+    }
+    ul{
+        list-style: none;
+    }
+    body{
+        background:rgba(238,238,238,0.5);
+        position:relative;
+    }
+    .login{
+        display:flex;
+        height: 80%;
+    }
+    .login>.header{
+        width:100%;
+        padding:10px 0px;
+        border-bottom: 1px solid #ccc;
+        overflow: hidden;
+    }
+    .login>.header>h1{
+        font-size:18px;
+        font-weight: normal;
+        float:left;
+    }
+    .login>.header>h1>a{
+        padding:5px;
+        margin-left:10px;
+        color:black;
+    }
+    .login>.header>h1>a:first-child{
+        margin-left:50px;
+        color:#2C689B;
+    }
+    .login>.header>button{
+        float:right;
+        width:20px;
+        height:20px;
+        cursor:pointer;
+        background: #fff;
+        border:1px solid #fff;
+
+    }
+    .login>form{
+        margin-top:30px;
+        padding:0 20px;
+    }
+    .login>form>div>input{
+        width:256px;
+        line-height: 40px;
+        padding-left: 5px;
+        border:1px solid #d0d6d9;
+        background: #F9F9F9;
+    }
+    .login>form>div>p{
+        width:256px;
+        height:25px;
+        line-height: 25px;
+        font-size: 12px;
+    }
+    .login>form>div.idcode>input{
+        width:150px;
+        margin-right:30px;
+        float: left
+    }
+    .login>form>div.idcode>span{
+        float:right;
+        width:80px;
+        height:30px;
+        margin-top:10px;
+        border:1px solid #ccc;
+
+    }
+    .login>form>div.idcode>a{
+        float: right;
+        color: black;
+        font-size: 12px;
+        margin-top:25px;
+        margin-left: 5px;
+    }
+    .clear{
+        clear:both;
+    }
+    .login>form>.autoLogin{
+        margin-top:20px;
+        margin-bottom: 20px;
+    }
+    .login>form>.autoLogin>label>input{
+        margin-right:5px;
+    }
+    .login>form>.autoLogin>label{
+        float:left;
+    }
+    .login>form>.autoLogin>a{
+        float:right;
+        color:#666;
+        font-size:14px;
+    }
+    .btn-red{
+        margin:20px 0px;
+        width:256px;
+    }
+    .login-btn{
+        width:256px;
+        height:50px;
+        text-align: center;
+    }
+    #login-btn:hover{
+        cursor:pointer;
+    }
+       

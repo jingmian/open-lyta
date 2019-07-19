@@ -1,0 +1,13 @@
+.h3-div{
+    display: flex;
+    align-items:flex-end;
+}
+
+h3{
+    margin-right: auto;
+}
+
+p{
+    margin-right: auto;
+}
+
